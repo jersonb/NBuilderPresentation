@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FizzWare.NBuilder;
+using Microsoft.AspNetCore.Mvc;
 using Models;
-using Models.Fake.InvoiceFakes;
+using Newtonsoft.Json;
 
 namespace NSubstitutePresentation.Api.Controllers
 {
@@ -9,9 +10,13 @@ namespace NSubstitutePresentation.Api.Controllers
     public class InvoiceController : ControllerBase
     {
         [HttpGet]
-        public Invoice Get()
+        public string Get()
         {
-            return new InvoiceFakeDefault().GetObject();
+            var simpleInstance = new Invoice();
+
+            var nbuilder = Builder<Invoice>.CreateNew().Build();
+
+            return JsonConvert.SerializeObject((simpleInstance, nbuilder));
         }
     }
 }
