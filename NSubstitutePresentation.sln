@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{25C29AE2-FCA1-407F-BB86-E8B5588D2FDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{25C29AE2-FCA1-407F-BB86-E8B5588D2FDF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSubstitutePresentation.Api", "NSubstitutePresentation.Api\NSubstitutePresentation.Api.csproj", "{946DE742-8A7D-48CC-BEEA-6BE130D66824}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.Fake", "Models.Fake\Models.Fake.csproj", "{9BC37152-B508-4A36-BE2E-D98DF37D0060}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSubstitutePresentation.Api", "NSubstitutePresentation.Api\NSubstitutePresentation.Api.csproj", "{946DE742-8A7D-48CC-BEEA-6BE130D66824}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{25C29AE2-FCA1-407F-BB86-E8B5588D2FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25C29AE2-FCA1-407F-BB86-E8B5588D2FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25C29AE2-FCA1-407F-BB86-E8B5588D2FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC37152-B508-4A36-BE2E-D98DF37D0060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC37152-B508-4A36-BE2E-D98DF37D0060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC37152-B508-4A36-BE2E-D98DF37D0060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC37152-B508-4A36-BE2E-D98DF37D0060}.Release|Any CPU.Build.0 = Release|Any CPU
 		{946DE742-8A7D-48CC-BEEA-6BE130D66824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{946DE742-8A7D-48CC-BEEA-6BE130D66824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{946DE742-8A7D-48CC-BEEA-6BE130D66824}.Release|Any CPU.ActiveCfg = Release|Any CPU
