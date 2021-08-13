@@ -8,7 +8,7 @@ namespace Models.Fake
     public class ModelFake<T> where T : class
     {
         protected Faker Faker => new Faker("pt_BR");
-        public RandomGenerator Random => new RandomGenerator();
+        protected RandomGenerator Random => new RandomGenerator();
 
         protected virtual ISingleObjectBuilder<T> SetBuilder()
             => Builder<T>.CreateNew();
