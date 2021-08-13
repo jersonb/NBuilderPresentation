@@ -5,7 +5,7 @@ using FizzWare.NBuilder;
 
 namespace Models.Fake
 {
-    public class ModelFakeBase<T> where T : class
+    public class ModelFake<T> where T : class
     {
         protected Faker Faker => new Faker("pt_BR");
         public RandomGenerator Random => new RandomGenerator();

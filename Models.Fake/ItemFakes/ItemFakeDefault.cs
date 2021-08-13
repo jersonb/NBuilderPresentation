@@ -2,7 +2,7 @@
 
 namespace Models.Fake.ItemFakes
 {
-    public class ItemFakeDefault : ModelFakeBase<Item>
+    public class ItemFakeDefault : ModelFake<Item>
     {
         protected override IListBuilder<Item> SetListBuild(int size)
             => base.SetListBuild(size)
