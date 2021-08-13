@@ -5,7 +5,7 @@ using Models.Fake.UserFakes;
 
 namespace Models.Fake.InvoiceFakes
 {
-    public class InvoiceFakeDefault : ModelFakeBase<Invoice>
+    public class InvoiceFakeWithInvalidItems : ModelFakeBase<Invoice>
     {
         protected override ISingleObjectBuilder<Invoice> SetBuilder()
             => base.SetBuilder()
@@ -13,7 +13,7 @@ namespace Models.Fake.InvoiceFakes
                 .With(invoice => invoice.Amount = invoice.Items.Sum(item => item.Value))
                 .With(invoice => invoice.IsActive, true)
                 .With(invoice => invoice.Obsevations, Faker.Lorem.Words().ToList())
-                .With(invoice => invoice.Items, new ItemFakeDefault().GetListObject(2))
+                .With(invoice => invoice.Items, new ItemFakeInvalid().GetListObject(2))
                 .With(invoice => invoice.User, new UserFakeDefault().GetObject());
     }
 }

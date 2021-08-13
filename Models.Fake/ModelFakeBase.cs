@@ -16,12 +16,12 @@ namespace Models.Fake
         public T GetObject()
            => SetBuilder().Build();
 
-        public List<T> GetListObject(int size = 10)
-            => SetListBuild(size).Build()
-                                 .ToList();
-
         protected virtual IListBuilder<T> SetListBuild(int size)
             => Builder<T>.CreateListOfSize(size)
                              .All();
+
+        public List<T> GetListObject(int size = 10)
+            => SetListBuild(size).Build()
+                                 .ToList();
     }
 }
