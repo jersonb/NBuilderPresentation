@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models.Fake", "Models.Fake\Models.Fake.csproj", "{9BC37152-B508-4A36-BE2E-D98DF37D0060}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NBuilderPresentation.Api", "NSubstitutePresentation.Api\NBuilderPresentation.Api.csproj", "{946DE742-8A7D-48CC-BEEA-6BE130D66824}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NBuilderPresentation.Api", "NBuilderPresentation.Api\NBuilderPresentation.Api.csproj", "{E93896AF-0F7C-4A5E-B819-C3AB25F82163}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{9BC37152-B508-4A36-BE2E-D98DF37D0060}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BC37152-B508-4A36-BE2E-D98DF37D0060}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BC37152-B508-4A36-BE2E-D98DF37D0060}.Release|Any CPU.Build.0 = Release|Any CPU
-		{946DE742-8A7D-48CC-BEEA-6BE130D66824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{946DE742-8A7D-48CC-BEEA-6BE130D66824}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{946DE742-8A7D-48CC-BEEA-6BE130D66824}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{946DE742-8A7D-48CC-BEEA-6BE130D66824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E93896AF-0F7C-4A5E-B819-C3AB25F82163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E93896AF-0F7C-4A5E-B819-C3AB25F82163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E93896AF-0F7C-4A5E-B819-C3AB25F82163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E93896AF-0F7C-4A5E-B819-C3AB25F82163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
