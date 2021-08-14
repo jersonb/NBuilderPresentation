@@ -1,13 +1,13 @@
 # NBuilderPresentation
 
-> Este repositório tem a intenção de promover a biblioteca [NBuilder](https://github.com/nbuilder/nbuilder) através de exemplos simples para iniciantes ou um tutorial de como gerar réplicas de objetos de maneira mais eficiente.
+> Este repositório tem a intenção de promover a biblioteca [NBuilder](https://github.com/nbuilder/nbuilder) através de exemplos simples para iniciantes ou um tutorial de como gerar réplicas de objetos de maneira mais eficiente. Além de um projeto com aplicabilidade real.
 
 ## Instância simples
 
 O **NBuilder** é capaz de instanciar objetos e atribuir valores as propriedades de tipos internos de maneira extremamente simples. Por exemplo o objeto ```Invoice``` a baixo foi gerado com o código:
 
 ```csharp
-    Builder<Invoice>.CreateNew().Build()
+    Builder<Invoice>.CreateNew().Build();
 ```
 
 ```json
@@ -46,7 +46,7 @@ O **NBuilder** é capaz de instanciar objetos e atribuir valores as propriedades
 Da mesma forma que criamos um único objeto, também podemos criar uma lista. Por exemplo, uma lista de ```Item``` será gerada com o seguinte código:
 
 ```csharp
-    Builder<Item>.CreateListOfSize(3).Build()
+    Builder<Item>.CreateListOfSize(3).Build();
 ```
 
 ```json
@@ -300,3 +300,80 @@ Em um senário real, ou ao menos em um caso de teste real este objeto poderia te
   2. Apenas com uma ```Func``` que recebe diretamente atribuição.
 
 Para referenciar a uma propriedade interna existente apenas a segunda maneira funciona, como por exemplo na atribuição de ```Amount``` em invoice.
+
+## Projeto e aplicação no dia a dia
+
+> O exemplo que segue neste projeto foi fruto de uma aplicação real, onde era necessário testar diversos fluxos com objetos com a mesma configuração e alguns senários com objetos com configurações diferentes, desta forma gerando duplicidade de código. A solução foi criar classes que expressassem o caso a ser testado, isolando a configuração dentro delas.
+
+Para concentrar a forma de configurar estes casos foi criada a classe genérica ```ModelFake``` e pode ser utilizada basicamente de três formas.
+
+```csharp
+    public class ModelFake<T> where T : class
+    {
+        protected RandomGenerator Random => new RandomGenerator();
+
+        protected virtual ISingleObjectBuilder<T> SetBuilder()
+            => Builder<T>.CreateNew();
+
+        public T GetObject()
+           => SetBuilder().Build();
+
+        protected virtual IListBuilder<T> SetListBuild(int size)
+            => Builder<T>.CreateListOfSize(size)
+                             .All();
+
+        public List<T> GetListObject(int size = 10)
+            => SetListBuild(size).Build()
+                                 .ToList();
+    }
+```
+
+### 1. Diretamente
+
+Desta forma gera um objeto simples como o primeiro exemplo.
+
+```csharp
+    Invoice invoice = new ModelFake<Invoice>().GetObject();
+    List<Invoice> invoices = new ModelFake<Invoice>().GetListObject();
+```
+
+### 2. Herdada e não configurada
+
+Desta forma também irá gerar objetos básicos.
+
+```csharp
+    public class UserFakeDefault : ModelFake<User>
+    {
+    }
+
+    //a ser usada desta forma
+
+    User user = new UserFakeDefault().GetObject;
+    List<User> users = new UserFakeDefault().GetListObject();
+```
+
+### 3. Herdada e configurada
+
+Sobrescrevendo os métodos virtuais da classe ```ModelFake``` pode-se alterar a configuração da geração de objetos ou da lista de objetos.
+
+```csharp
+    public class ItemFakeDefault : ModelFake<Item>
+    {
+        protected override ISingleObjectBuilder<Item> SetBuilder()
+            => base.SetBuilder()
+                   .With(item => item.IsActive, true);
+
+        protected override IListBuilder<Item> SetListBuild(int size)
+            => base.SetListBuild(size)
+                   .Do(item =>
+                   {
+                       item.Name = Random.Phrase(10);
+                       item.Value = Random.Next(1m, 100m);
+                   })
+                   .With(item => item.IsActive, true);
+    }
+```
+
+## Por fim
+
+> Espero que esse artigo em forma de repositório te ajude de alguma forma, se te ajudou marca com uma estrela aqui. Se encontrou algum ponto que possa melhorar manda uma *issue* por aqui mesmo. Se quiser trocar mais ideias me adiciona no [LinkedIn](https://linkedin.com/in/jersonb).
