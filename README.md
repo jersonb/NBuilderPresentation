@@ -29,7 +29,7 @@ O **NBuilder** é capaz de instanciar objetos e atribuir valores as propriedades
 
 - A propriedade ```externalId``` é um ```Guid``` e a pesar de ser semelhante ao valor *default*, este é um valor válido para este tipo.
 
-- As propriedades numéricas, ```id``` e```amount```, não estão com zero.
+- As propriedades numéricas, ```id``` e ```amount```, não estão com zero.
 
 - A propriedade ```description``` é do tipo ```string``` e recebeu como valor o nome concatenado com 1.
 
@@ -85,7 +85,7 @@ Da mesma forma que criamos um único objeto, também podemos criar uma lista. Po
 
 ## Configurando valores
 
-Como foi visto no primeiro exemplo os valores de tipos criados ou complexos não são atribuídos. Porém podemos configura-los informando para o **NBuilder** qual são os valor que devem ser atribuídos a essas propriedades. Faremos isso utilizando o método de extensão ```With```. Vale ressaltar que para configurar uma lista é necessário dizer quais os elementos receberam aquela configuração, neste caso será utilizado método ```All``` atribuindo assim o mesmo valor para todos os elementos.
+Como foi visto no primeiro exemplo os valores de tipos criados ou complexos não são atribuídos. Porém podemos configura-los informando para o **NBuilder** quais são os valor que devem ser atribuídos a essas propriedades. Faremos isso utilizando o método de extensão ```With```. Vale ressaltar que para configurar uma lista é necessário dizer quais os elementos receberam aquela configuração, neste caso será utilizado método ```All``` atribuindo assim o mesmo valor para todos os elementos.
 
 ```csharp
     IList<Item> items = Builder<Item>
@@ -215,7 +215,7 @@ E ao adicionarmos a configuração ```With(invoice => invoice.Obsevations, obser
 
 ## Obtendo um objeto totalmente randômico
 
-Em um senário real, ou ao menos em um caso de teste real este objeto poderia ter algum comportamento a mais, como por exemplo, a propriedade ```amount``` representar a soma dos valores dos itens, ou o nome do ```user``` relacionado ter algum tipo de regra com relação ao tamanho. Enfim um senário que seria mais interessante onde esses valores fosse randômicos.
+Em um senário real, ou ao menos em um caso de teste real este objeto poderia ter algum comportamento a mais, como por exemplo, a propriedade ```amount``` representar a soma dos valores dos itens, ou o nome do ```user``` relacionado ter algum tipo de regra com relação ao tamanho. Enfim um senário que seria mais interessante onde esses valores fossem randômicos.
 
 ```csharp
     var ramdom = new RandomGenerator();
@@ -291,9 +291,9 @@ Em um senário real, ou ao menos em um caso de teste real este objeto poderia te
 
 **Observe que:**
 
-- Ao criar a lista de itens foi utilizado o método ```Do``` com uma ```Action``` para definir algumas propriedades, desta forma a cada item obteremos valores diferentes, caso fosse utilizado o ```With``` obteríamos os valores repetidos para todos os itens assim como acontece em ```isActive``` .
+- Ao criar a lista de itens foi utilizado o método ```Do``` com uma ```Action``` para definir algumas propriedades, desta forma a cada item obteremos valores diferentes, caso fosse utilizado o ```With``` obteríamos os valores repetidos para todos os itens assim como acontece em ```isActive```.
 
-- No ```With``` pode-se atribuir valores de duas formas. :
+- No ```With``` pode-se atribuir valores de duas formas:
 
   1. Com uma ```Func``` no primeiro parâmetro para determinar a propriedade e um segundo parâmetro com o valor.  
 
