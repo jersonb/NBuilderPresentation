@@ -7,6 +7,6 @@ namespace Models.Fake.UserFakes
         protected override ISingleObjectBuilder<User> SetBuilder()
             => base.SetBuilder()
                     .With(user => user.IsActive, true)
-                    .With(user => user.Name, Faker.Person.FullName);
+                    .With(user => user.Name, Random.Phrase(10));
     }
 }

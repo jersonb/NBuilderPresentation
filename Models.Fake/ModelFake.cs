@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Bogus;
 using FizzWare.NBuilder;
 
 namespace Models.Fake
 {
     public class ModelFake<T> where T : class
     {
-        protected Faker Faker => new Faker("pt_BR");
         protected RandomGenerator Random => new RandomGenerator();
 
         protected virtual ISingleObjectBuilder<T> SetBuilder()
