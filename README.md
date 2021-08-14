@@ -82,3 +82,68 @@ Da mesma forma que criamos um único objeto, também podemos criar uma lista. Po
 - Os valores recebem um incremento a cada item da lista, desta forma todos os objetos são diferentes entre si.
 
 - Já propriedade ```isActive``` que é *booleana* alterna entre ```false``` e ```true``` a cada objeto.
+
+## Configurando valores
+
+Como foi visto no primeiro exemplo os valores de tipos criados ou complexos não são atribuídos. Porém podemos configura-los informando para o **NBuilder** qual são os valor que devem ser atribuídos a essas propriedades. Faremos isso utilizando o método de extensão ```With```. Vale ressaltar que para configurar uma lista é necessário dizer quais os elementos receberam aquela configuração, neste caso será utilizado método ```All``` atribuindo assim o mesmo valor para todos os elementos.
+
+```csharp
+    IList<Item> items = Builder<Item>
+                        .CreateListOfSize(2)
+                        .All()
+                        .With(item => item.IsActive, true)
+                        .Build();
+
+    User user = Builder<User>
+                .CreateNew()
+                .With(user => user.IsActive, true)
+                .Build();
+
+    Invoice invoice = Builder<Invoice>
+                      .CreateNew()
+                      .With(invoice => invoice.Items, items)
+                      .With(invoice => invoice.User, user)
+                      .With(invoice => invoice.IsActive, true)
+                      .Build();
+```
+
+Com o código acima obteremos o seguinte objeto:
+
+```json
+    {
+        "externalId": "00000000-0000-0000-0000-000000000001",
+        "id": 1,
+        "description": "Description1",
+        "isActive": true,
+        "amount": 1,
+        "date": "2021-08-14T00:00:00",
+        "invoiceType": 1,
+        "obsevations": null,
+        "items": [
+            {
+                "externalId": "00000000-0000-0000-0000-000000000001",
+                "id": 1,
+                "name": "Name1",
+                "isActive": true,
+                "value": 1
+            },
+            {
+                "externalId": "00000000-0000-0000-0000-000000000002",
+                "id": 2,
+                "name": "Name2",
+                "isActive": true,
+                "value": 2
+            }
+        ],
+        "user": {
+            "externalId": "00000000-0000-0000-0000-000000000001",
+            "id": 1,
+            "name": "Name1",
+            "isActive": true
+        }
+    }
+```
+
+**Observe que:**
+
+- Todas as propriedades ```isActive``` de todos os objetos envolvidos estão ```true``` como configurado.
