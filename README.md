@@ -1,6 +1,6 @@
 # NBuilderPresentation
 
-> Este repositório tem a intenção de promover a biblioteca [NBuilder](https://github.com/nbuilder/nbuilder) através de exemplos simples para iniciantes ou um tutorial de como gerar réplicas de objetos de maneira mais eficiente. Além de um projeto com aplicabilidade real.
+> Este repositório tem o propósito de promover a biblioteca [NBuilder](https://github.com/nbuilder/nbuilder) através de exemplos simples para iniciantes ou um tutorial de como gerar réplicas de objetos de maneira mais eficiente. Além de um projeto com aplicabilidade real.
 
 ## Instância simples
 
